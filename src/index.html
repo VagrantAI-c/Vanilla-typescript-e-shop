@@ -1,5 +1,112 @@
-<!DOCTYPE html>
-<html>
-    <head></head>
-    <body></body>
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Grocery Cart</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header class="header-block">
+            <p class="logo">Excellent store</p>
+            <button 
+                onclick="app.toggleSidebar()"
+                class="sidebar-button">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Cart</span>
+                <span 
+                    cartQuantityLabel 
+                    class="quantity">
+                </span>
+            </button>
+            <aside
+                cartSidebar 
+                class="cart-sidebar-block">
+                <button
+                    onclick="app.toggleSidebar()"
+                    class="close-button">
+                    <i class="fa fa-times"></i>
+                    <span>Close</span>
+                </button>
+                <div 
+                    cartItemsContainer 
+                    class="items-block">
+                    <!-- Cart items would render here -->
+                </div>
+                <b class="summary-row">
+                    <span 
+                        cartSummaryLabel
+                        class="amount">
+                        0$
+                    </span>
+                    &nbsp;
+                    <span>total</span>
+                </b>
+                <button 
+                    class="clear-cart-button" 
+                    onclick="app.clearCart()">
+                    Clear cart
+                </button>
+            </aside>
+        </header>
+        <div 
+            masonryContainer
+            class="masonry-block">
+            <!-- Masonry items would render here -->
+        </div>
+
+        <!-- Masonry item template -->
+        <template vehicleCard>
+            <div class="vehicle-card">
+                <div class="wrapper-block">
+                    <button 
+                        vehicleCardPurchaseButton
+                        aria-label="Purchase"
+                        class="purchase-button">
+                        <i class="fa fa-shopping-cart fa-lg"></i>
+                    </button>
+                    <img
+                        vehicleCardImage 
+                        class="vehicle-image"
+                        alt="">
+                </div>
+                <div class="label-block">
+                    <p 
+                        vehicleCardNameLabel
+                        class="name-label">
+                    </p>
+                    <p 
+                        vehicleCardPriceLabel
+                        class="price-label">
+                    </p>
+                </div>
+            </div>
+        </template>
+
+        <!-- Sidebar cart item template -->
+        <template cartItem>
+            <div
+                cartItemWrapper 
+                class="cart-item-block">
+                <img
+                    cartItemImage
+                    class="item-image"
+                    alt="">
+                <span
+                    cartItemNameLabel
+                    class="cart-item-name">
+                </span>
+                <span 
+                    cartItemPriceLabel
+                    class="cart-item-price">
+                </span>
+                <button 
+                    cartItemRemoveButton
+                    aria-label="remove"
+                    class="remove-button">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </template>
+
+        <script src="index.js"></script>
+    </body>
 </html>

@@ -1,0 +1,90 @@
+@mixin button-style {
+    $color: #0076ff;
+
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 32px;
+    vertical-align: baseline;
+    flex-shrink: 0;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background: $color;
+    border: none;
+    border-radius: 4px;
+    color: #f0f0f0;
+    transition: background-color 180ms cubic-bezier(.4,0,.2,1);
+
+    &:hover {
+        background: lighten($color, 8%);
+    }
+    
+    &:focus:not(:active) {
+        background: lighten($color, 12%);
+    }
+
+    &:active {
+        background: lighten($color, 16%);
+    }
+
+    .fa + * {
+        margin-left: 8px;
+    }
+
+    * + .fa {
+        margin-right: 8px;
+    }
+}
+
+@mixin secondary-button-style {
+    @include button-style;
+
+    background: transparent;
+    color: #2a2a2a;
+    border: 1px solid #2a2a2a;
+
+    &:hover {
+        background: rgba(black, 0.04);
+    }
+    
+    &:focus:not(:active) {
+        background: rgba(black, 0.08);
+    }
+
+    &:active {
+        background: rgba(black, 0.12);
+    }
+}
+
+@mixin icon-button-style {
+    @include button-style;
+
+    height: 48px;
+    width: 48px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+@mixin icon-accent-button-style {
+    @include icon-button-style;
+    $color: #f44336;
+    background: $color;
+
+    &:hover {
+        background: lighten($color, 8%);
+    }
+    
+    &:focus:not(:active) {
+        background: lighten($color, 12%);
+    }
+
+    &:active {
+        background: lighten($color, 16%);
+    }
+
+}

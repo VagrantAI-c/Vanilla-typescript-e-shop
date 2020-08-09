@@ -1,3 +1,18 @@
-@use '~@fortawesome/fontawesome-free/scss/fontawesome.scss' with (
-    $fa-font-path: '@fortawesome/fontawesome-free/webfonts'
-);
+@use '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+$font-path: '../node_modules/@fortawesome/fontawesome-free/webfonts';
+@use '~@fortawesome/fontawesome-free/scss/regular.scss' with ($fa-font-path: $font-path);
+@use '~@fortawesome/fontawesome-free/scss/solid.scss' with ($fa-font-path: $font-path);
+
+@use 'styles/header';
+@use 'styles/cart-sidebar';
+@use 'styles/cart-item';
+@use 'styles/masonry';
+
+html, body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}

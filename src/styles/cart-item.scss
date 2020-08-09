@@ -1,0 +1,25 @@
+@import 'button';
+
+.cart-item-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    & > :not(:last-child) {
+        margin-right: 16px;
+    }
+
+    .item-image {
+        display: block;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .remove-button {
+        @include icon-accent-button-style;
+
+        margin-left: auto;
+    }
+}
