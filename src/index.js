@@ -186,7 +186,7 @@ var app = (function (exports) {
             cartItem.render(container);
             cartItems.push(cartItem);
         });
-        select(AppElement.CART_QUANTITY_LABEL).textContent = `(${items.length} item${items.length === 1 ? 's' : ''})`;
+        select(AppElement.CART_QUANTITY_LABEL).textContent = `(${items.length} item${items.length === 1 ? '' : 's'})`;
         select(AppElement.CART_SUMMARY_LABEL).textContent = beautifyPrice(cartSum);
     }
     function toggleSidebar() {
