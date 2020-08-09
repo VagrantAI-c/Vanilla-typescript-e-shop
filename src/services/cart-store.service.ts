@@ -21,11 +21,6 @@ export class CartStoreService {
         this.emit();
     }
 
-    /** 
-     * Listens to item changes via provided callback
-     * 
-     * @returns unlisten callback
-     */
     public listen(callbackFn: Callback<Vehicle[]>): void {
         this.listeners.add(callbackFn);
         callbackFn(this.getItems());
