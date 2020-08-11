@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ master ]
   workflow_dispatch:
+    branches: [ master ]
+
 
 jobs:
   build:
@@ -13,6 +15,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Clean install
+      run: npm ci
     
     - name: Lint
       run: npm run lint
