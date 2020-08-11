@@ -1,0 +1,32 @@
+name: Deploy to GH Pages
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+    branches: [ master ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Clean install
+      run: npm ci
+    
+    - name: Lint
+      run: npm run lint
+    
+    - name: Build
+      run: npm run build
+
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.6.4
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
