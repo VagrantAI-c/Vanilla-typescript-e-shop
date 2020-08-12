@@ -12,12 +12,12 @@ import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 
 /** Folder to compile bundles to */
-const distFolder = './dist/';
+const DIST_FOLDER = './dist/';
 /** This file would be searched among source folder */
 const ENTRY_POINT_FILE = 'index.ts';
 
 function distFolderFor(fileName) {
-    return `${distFolder}${(fileName || '').replace(ENTRY_POINT_FILE, '').replace('src/', '')}`;
+    return `${DIST_FOLDER}${(fileName || '').replace(ENTRY_POINT_FILE, '').replace('src/', '')}`;
 }
 
 function setExtension(fileName, extension) {
@@ -32,7 +32,7 @@ function buildConfigs({environment}) {
     const isProd = environment === 'production';
 
     // Finds all index.ts files in current folder, excluding node_modules
-    return glob.sync(`**/${ENTRY_POINT_FILE}`, {
+    const configs = glob.sync(`**/${ENTRY_POINT_FILE}`, {
         root: __dirname,
         ignore: 'node_modules/**',
     })
@@ -45,7 +45,7 @@ function buildConfigs({environment}) {
                     name: 'app',
                 },
                 plugins: [
-                    clear({targets: [`${__dirname}/${distFolder}`], watch: true}), // Clear dist folder before build
+                    clear({targets: [`${__dirname}/${distFolderFor(fileName)}`], watch: true}), // Clear dist folder before build
                     copy([
                         // Copy fontawesome fonts to assets folder
                         { files: './node_modules/@fortawesome/fontawesome-free/webfonts/', dest: `${distFolderFor(fileName)}/assets` },
@@ -79,6 +79,8 @@ function buildConfigs({environment}) {
                 ],
             },
         ]);
+
+    return configs;
 }
 
 
