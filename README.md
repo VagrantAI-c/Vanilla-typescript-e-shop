@@ -1,5 +1,11 @@
 # Infrastructure/devops training ground
 
+## Demo
+
+https://vagrantai-c.github.io/Vanilla-typescript-e-shop/
+
+## Features
+
 This project represents simple frameworkless e-commerce app. Additionally, next features are included:
 
 - Bundling via Rollup w/ watch mode
